@@ -33,7 +33,7 @@ module Google
           "#{name}/#{version}"
         else
           `uname -sr`.sub(' ', '/')
-        end
+        end.strip
       rescue Exception
         RUBY_PLATFORM
       end
