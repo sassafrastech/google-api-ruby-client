@@ -1,3 +1,6 @@
+# 0.8.2 fix whitespace in environment
+* Update lib/google/api_client/environment.rb to strip whitespace. The whitespace causes a CR/LF error in Rails 5. 
+
 # 0.8.2
 * Fixes for file storage and missing cacerts file
 
