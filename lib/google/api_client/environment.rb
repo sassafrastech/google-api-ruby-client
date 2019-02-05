@@ -33,6 +33,10 @@ module Google
           "#{name}/#{version}"
         else
           `uname -sr`.sub(' ', '/')
+          # Added 'strip' to match 2018 update https://github.com/googleapis/google-api-ruby-client/pull/654
+          # This is to fix error "ArgumentError: header User-Agent has field value "Hollaback Fusion Tables/1.0.0 google-api-ruby-client/0.8.2 Mac OS X/10.14.2\n (gzip)", this cannot include CR/LF"
+          # Error was coming from ruby in line 43 of FusionTablesHelper in Hollaback Backend: @api_method ||= client.discovered_api('fusiontables', 'v2').query.sql
+          # Decided to fork instead of upgrade because we have to replace fusion tables within a year.
         end.strip
       rescue Exception
         RUBY_PLATFORM
